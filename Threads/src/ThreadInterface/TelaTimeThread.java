@@ -5,6 +5,14 @@ import java.awt.*;
 
 public class TelaTimeThread extends JDialog /*pacote java / Framework para aplicações desktop, interfaces*/{
 
+    private JPanel Jpanel = new JPanel(new GridBagLayout());// painel de componentes
+
+    private JLabel descricaoHora = new JLabel("Time Thread 1");
+    private JTextField mostraTempo = new JTextField();//campo de texto
+
+    private JLabel descricaoHora2 = new JLabel("Time Thread 2");
+    private JTextField mostraTempo2 = new JTextField(); //campo de texto
+
     public TelaTimeThread(){
         setTitle("Minha tela de TIme com Thread");
         setSize(new Dimension(240, 240));
@@ -12,10 +20,33 @@ public class TelaTimeThread extends JDialog /*pacote java / Framework para aplic
         setResizable(false);
         //primeira parte concluida
 
-        
+
+        //Controlador de posicionamentos de botões na tela
+        GridBagConstraints gridBagConstraints = new GridBagConstraints();//gerenciador de layout
+        gridBagConstraints.gridy = 0;//coluna
+        gridBagConstraints.gridx = 0;//linha
+
+        descricaoHora.setPreferredSize(new Dimension(200, 25));// tamanho
+        Jpanel.add(descricaoHora, gridBagConstraints);
+
+        mostraTempo.setPreferredSize(new Dimension(200, 25));//tamanho
+        gridBagConstraints.gridy++;//coluna
+        Jpanel.add(mostraTempo, gridBagConstraints);
+
+        //*************** Divisão das Threads
+
+        descricaoHora2.setPreferredSize(new Dimension(200, 25));
+        gridBagConstraints.gridy++;
+        Jpanel.add(descricaoHora2, gridBagConstraints);
+
+        mostraTempo2.setPreferredSize(new Dimension(200, 25));
+        gridBagConstraints.gridy++;//coluna
+        Jpanel.add(mostraTempo2, gridBagConstraints);
 
 
 
+
+        add(Jpanel, BorderLayout.WEST);
         setVisible(true); /* Torna a tela visivel para o usuário,
         sempre será o ultimo comando */
     }
